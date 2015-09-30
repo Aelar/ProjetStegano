@@ -13,7 +13,7 @@ public class testImage {
     //Stocke l'image
     BufferedImage img;
 
-    //Matrice de pixel
+    //Matrice de pixel stocké en tableau de bit
     List<List<Pixel>> matrix = new ArrayList<List<Pixel>>();
 
     public testImage(String nom) throws IOException {
@@ -29,7 +29,7 @@ public class testImage {
             //Boucle ligne
             for(int j = 0; j<img.getHeight();++j){
                 //Stocke le pixel a ça position dans la matrice
-                matrix.get(i).add(new Pixel(new Color(img.getRGB(i,j))));
+                matrix.get(i).add(new Pixel(new Color(img.getRGB(i, j))));
             }
         }
 
@@ -39,9 +39,13 @@ public class testImage {
         return matrix;
     }
 
+    public BufferedImage getImg() {
+        return img;
+    }
+
     public static void main(String[] args) throws IOException {
         testImage img = new testImage("/home/aelar/IdeaProjects/ProjetStegano/output/production/ProjetSteganog/img.jpg");
         System.out.println(img.getMatrix().toString());
-
+        System.out.println(new Color(img.getImg().getRGB(img.getImg().getWidth() - 1, img.getImg().getHeight() - 1)));
     }
 }

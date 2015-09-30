@@ -1,33 +1,46 @@
 import java.awt.*;
-import java.util.Collection;
-import java.util.TreeSet;
+import java.util.*;
+import java.util.List;
 
 /**
  * Created by aelar on 30/09/15.
  */
 public class Pixel {
-    Integer R;
-    Integer V;
-    Integer B;
+    Collection<Integer> R;
+    Collection<Integer> V;
+    Collection<Integer> B;
 
-    public Integer getR() {
+    public Collection<Integer> getR() {
         return R;
     }
-
-    public Integer getV() {
+    private List<Integer> reverse(List<Integer> list){
+        Integer temp=0;
+        for(int i=0;i<list.size()/2;++i){
+            temp = list.get(i);
+            list.set(i,list.get(list.size()-1-i));
+            list.set(list.size()-1-i,temp);
+        }
+        return list;
+    }
+    public Collection<Integer> getV() {
         return V;
     }
 
-    public Integer getB() {
+    public Collection<Integer> getB() {
         return B;
     }
 
-    private Collection<Integer> toBinary(int i){
-        Collection<Integer> Bin = new TreeSet<Integer>();
-        if(i<2){
-            Bin.addAll(toBinary(i/2));
+    private Collection<Integer> toBinaryCol(String binary){
+        java.util.List<Integer> Bin = new ArrayList<Integer>();
+
+        for(int i=binary.length()-1;i>=0;i--){
+            Bin.add(Character.getNumericValue(binary.charAt(i)));
         }
-        Bin.add(i%2);
+        for(int i = 0;i<8-binary.length();i++){
+            Bin.add(0);
+        }
+        Bin=reverse(Bin);
+        //System.out.println(binary.length());
         return Bin;
     }
 
@@ -38,9 +51,9 @@ public class Pixel {
         V = toBinary(col.getGreen());
         B = toBinary(col.getBlue());*/
 
-        R = col.getRed();
-        V= col.getGreen();
-        B= col.getBlue();
+        R = toBinaryCol(Integer.toBinaryString(col.getRed()));
+        V= toBinaryCol(Integer.toBinaryString(col.getGreen()));
+        B= toBinaryCol(Integer.toBinaryString(col.getBlue()));
     }
 
     @Override
