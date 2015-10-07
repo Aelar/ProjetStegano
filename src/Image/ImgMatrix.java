@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * Created by aelar on 23/09/15.
  */
-public class imgMatrix {
+public class ImgMatrix {
     //Stocke l'image
     BufferedImage img;
     String hideMask="11110000";
@@ -93,7 +93,7 @@ public class imgMatrix {
 
     List<List<Color>> byteMatrix = new ArrayList<List<Color>>();
 
-    public imgMatrix(String nom) throws IOException {
+    public ImgMatrix(String nom) throws IOException {
 
         //Charge l'image dans le buffer
         img = ImageIO.read(new File(nom));
@@ -113,7 +113,7 @@ public class imgMatrix {
 
     }
 
-    public imgMatrix(int height,int width){
+    public ImgMatrix(int height, int width){
         for(int i=0; i<height;++i){
             byteMatrix.add(new ArrayList<Color>());
             for (int j=0;j<width;++j){
@@ -121,7 +121,7 @@ public class imgMatrix {
             }
         }
     }
-    public imgMatrix(imgMatrix Img){
+    public ImgMatrix(ImgMatrix Img){
 
         for(int i = 0; i<Img.getHeight();++i){
             //matrix.add(new ArrayList<Image.Pixel>());
@@ -145,7 +145,7 @@ public class imgMatrix {
     }
 
     public static void main(String[] args) throws IOException {
-        imgMatrix img = new imgMatrix("/home/aelar/IdeaProjects/ProjetStegano/output/production/ProjetSteganog/img.jpg");
+        ImgMatrix img = new ImgMatrix("/home/aelar/IdeaProjects/ProjetStegano/output/production/ProjetSteganog/img.jpg");
         //System.out.println(img.getMatrix().toString());
         //System.out.println(new Color(img.getImg().getRGB(img.getImg().getWidth() - 1, img.getImg().getHeight() - 1)));
         System.out.println(img.getByteMatrix().get(0).get(0));

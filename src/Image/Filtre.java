@@ -11,11 +11,11 @@ import java.io.IOException;
  */
 public final class Filtre {
 
-    public static void sepia(imgMatrix img) throws IOException {
+    public static void sepia(ImgMatrix img) throws IOException {
         double r;
         double g;
         double b;
-        imgMatrix sepia = new imgMatrix(img);
+        ImgMatrix sepia = new ImgMatrix(img);
         for(int i=0; i<img.getHeight();++i){
             for(int j=0;j<img.getWidth();++j){
                 r=(img.get(i,j).getRed()*.393)+(img.get(i,j).getGreen()*.769)+(img.get(i,j).getBlue()*.189);
@@ -39,12 +39,12 @@ public final class Filtre {
 
     }
 
-    public static void gray(imgMatrix img) throws IOException {
+    public static void gray(ImgMatrix img) throws IOException {
         int r;
         int g;
         int b;
 
-        //Image.imgMatrix gray = new Image.imgMatrix(img);
+        //Image.ImgMatrix gray = new Image.ImgMatrix(img);
 
         BufferedImage bImg = new BufferedImage(img.getHeight(),img.getWidth(),BufferedImage.TYPE_3BYTE_BGR);
         for(int i=0;i<img.getHeight();++i){
@@ -59,9 +59,9 @@ public final class Filtre {
 
     }
 
-    public static void rotate(imgMatrix img,boolean sens) throws IOException {
+    public static void rotate(ImgMatrix img,boolean sens) throws IOException {
         //Color color;
-        //Image.imgMatrix imgRotated = new Image.imgMatrix(img.getWidth(),img.getHeight());
+        //Image.ImgMatrix imgRotated = new Image.ImgMatrix(img.getWidth(),img.getHeight());
 
         BufferedImage bImg = new BufferedImage(img.getWidth(),img.getHeight(),BufferedImage.TYPE_3BYTE_BGR);
         if(sens) {
@@ -81,7 +81,7 @@ public final class Filtre {
     }
 
     public static void main(String[] args) throws IOException {
-        imgMatrix img = new imgMatrix("rotate.jpg");
+        ImgMatrix img = new ImgMatrix("rotate.jpg");
 
         Filtre.sepia(img);
         Filtre.gray(img);

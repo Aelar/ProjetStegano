@@ -10,8 +10,8 @@ import java.io.IOException;
  */
 public final class UnfusionImg {
 
-    public static void UnfusionImg(imgMatrix img) throws IOException {
-        imgMatrix more = new imgMatrix(img);
+    public static void UnfusionImg(ImgMatrix img) throws IOException {
+        ImgMatrix more = new ImgMatrix(img);
         more.hiddingMask();
 
         BufferedImage img1 = new BufferedImage(more.getHeight(),more.getWidth(),BufferedImage.TYPE_3BYTE_BGR);
@@ -24,7 +24,7 @@ public final class UnfusionImg {
 
         ImageIO.write(img1,"png",new File("./img1.png"));
 
-        imgMatrix less = new imgMatrix(img);
+        ImgMatrix less = new ImgMatrix(img);
         less.gettingMask();
 
 
@@ -44,7 +44,7 @@ public final class UnfusionImg {
     }
 
     public static void main(String[] args) throws IOException {
-        imgMatrix img = new imgMatrix("./out.png");
+        ImgMatrix img = new ImgMatrix("./out.png");
 
         UnfusionImg.UnfusionImg(img);
     }

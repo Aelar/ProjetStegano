@@ -9,13 +9,13 @@ import java.io.IOException;
 /**
  * Created by aelar on 03/10/15.
  */
-public final class imgFusion {
+public final class ImgFusion {
 
 
-    public static void ImgFusion(imgMatrix hiding, imgMatrix toHide) throws IOException {
+    public static void ImgFusion(ImgMatrix hiding, ImgMatrix toHide) throws IOException {
         hiding.hiddingMask();
         toHide.toHideMask();
-        imgMatrix fusionned;
+        ImgMatrix fusionned;
         BufferedImage img = new BufferedImage(hiding.getHeight(),hiding.getWidth(),BufferedImage.TYPE_3BYTE_BGR);
 
         fusionned=fusion(hiding,toHide);
@@ -30,11 +30,11 @@ public final class imgFusion {
 
     }
 
-    private static imgMatrix fusion(imgMatrix hiding, imgMatrix toHide){
+    private static ImgMatrix fusion(ImgMatrix hiding, ImgMatrix toHide){
         int r;
         int g;
         int b;
-        imgMatrix hidded= new imgMatrix(hiding);
+        ImgMatrix hidded= new ImgMatrix(hiding);
         for(int i=0;i<hiding.getHeight();++i){
             for(int j=0;j<hiding.getWidth();++j){
                 if(i<toHide.getHeight() && j< toHide.getWidth()){
@@ -50,9 +50,9 @@ public final class imgFusion {
     }
 
     public static void main(String[] args) throws IOException {
-        imgMatrix img1=new imgMatrix("/home/aelar/IdeaProjects/ProjetStegano/output/production/ProjetSteganog/1.jpg");
-        imgMatrix img2=new imgMatrix("/home/aelar/IdeaProjects/ProjetStegano/output/production/ProjetSteganog/2.jpg");
-        imgFusion.ImgFusion(img1,img2);
+        ImgMatrix img1=new ImgMatrix("/home/aelar/IdeaProjects/ProjetStegano/output/production/ProjetSteganog/1.jpg");
+        ImgMatrix img2=new ImgMatrix("/home/aelar/IdeaProjects/ProjetStegano/output/production/ProjetSteganog/2.jpg");
+        ImgFusion.ImgFusion(img1, img2);
     }
 
 }

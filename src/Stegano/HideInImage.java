@@ -1,18 +1,17 @@
 package Stegano;
 
-import Image.imgMatrix;
 import Text.HideFile;
-
+import Image.*;
 import java.awt.*;
 
 /**
  * Created by aelar on 05/10/15.
  */
-public class hideInImage {
-    imgMatrix img;
+public class HideInImage {
+    ImgMatrix img;
     String text;
 
-    public hideInImage(imgMatrix img, HideFile text) {
+    public HideInImage(ImgMatrix img, HideFile text) {
         this.img = img;
         this.text = text.toBinary();
     }
